@@ -79,6 +79,23 @@ Use the example button to quickly test the application.
 
 The objective of this project is to combine multiple NLP classification applications into a single interactive Streamlit dashboard and demonstrate the practical use of machine learning for text classification.
 
+## 📸 Screenshots
+
+### 🏠 Application Interface
+
+![NLP Intelligence Hub - Home Interface](images/home_interface.png)
+
+### 😊 Sentiment Analysis
+
+![Sentiment Analysis Result](images/sentiment_result.png)
+
+### 🚨 Spam Detection
+
+![Spam Detection Result](images/spam_result.png)
+
+### 📰 News Classification
+
+![News Classification Result](images/news_result.png)
 👨‍💻 Author
 
 Sanskar Patel
