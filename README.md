@@ -49,9 +49,10 @@ NLP_Intelligence_Hub/
 │
 ├── news_model.pkl
 └── news_vectorizer.pkl
+```
 
 
-⚙️ How to Run
+## ⚙️ How to Run
 1. Clone or download the project
 
 Open the project folder in VS Code.
@@ -67,7 +68,7 @@ streamlit run nlp_intelligence_hub.py
 
 The application will open in your web browser.
 
-💡 How to Use
+## 💡 How to Use
 
 Select one of the available NLP tasks.
 Enter text into the input box.
@@ -75,7 +76,7 @@ Click the analysis button.
 View the prediction and confidence score where available.
 Use the example button to quickly test the application.
 
-🎯 Project Objective
+## 🎯 Project Objective
 
 The objective of this project is to combine multiple NLP classification applications into a single interactive Streamlit dashboard and demonstrate the practical use of machine learning for text classification.
 
@@ -96,7 +97,8 @@ The objective of this project is to combine multiple NLP classification applicat
 ### 📰 News Classification
 
 ![News Classification Result](images/news_result.png)
-👨‍💻 Author
+
+## 👨‍💻 Author
 
 Sanskar Patel
 
