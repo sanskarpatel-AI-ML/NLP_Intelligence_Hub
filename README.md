@@ -4,6 +4,10 @@ An interactive Natural Language Processing (NLP) application built using Python,
 
 The application brings three NLP classification projects together in a single user-friendly interface.
 
+## 🚀 Live Demo
+
+👉 [NLP Intelligence Hub](https://nlpintelligenceapp.streamlit.app/)
+
 ## 🚀 Features
 
 ### 😊 Sentiment Analysis
