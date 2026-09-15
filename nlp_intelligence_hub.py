@@ -1,5 +1,6 @@
 import streamlit as st
 import joblib
+import random
 
 sentiment_model=joblib.load('sentiment_model.pkl')
 sentiment_vectorizer=joblib.load('sentiment_vectorizer.pkl')
@@ -59,9 +60,34 @@ def result_card(icon, title, confidence=None, result_type="success"):
         unsafe_allow_html=True
     )
 
-def set_example(key, text):
-    st.session_state[key] = text
 
+def set_sentiment_example():
+    st.session_state.ti1 = st.session_state.sentiment_example
+
+def set_spam_example():
+    spam_examples = [
+        "Hey, are we still meeting for lunch today?",
+        "Please send me the report when you get a chance.",
+        "I've reached sch already. Let me know when you arrive.",
+        "Congratulations! You have won a free prize. Call now to claim your reward.",
+        "FREE MESSAGE! You have been selected for a special cash prize. Call now to claim."
+    ]
+
+    st.session_state.ti2 = random.choice(spam_examples)
+
+def set_news_challenge():
+    news_examples = [
+        "Apple unveils a new AI-powered device with advanced features.",
+        "Global markets rise as investors react to strong economic growth.",
+        "The latest blockbuster film breaks box office records worldwide.",
+        "Government announces new policies ahead of national elections.",
+        "Microsoft invests billions in artificial intelligence research.",
+        "Major banks report strong quarterly earnings amid market growth.",
+        "Popular actor announces a new movie scheduled for release next year.",
+        "Political leaders begin campaigning ahead of the upcoming election."
+    ]
+
+    st.session_state.news_input = random.choice(news_examples)
 
 st.set_page_config(
     page_title="NLP Intelligence Hub",
@@ -145,14 +171,20 @@ with tab1:
         )
 
     with col2:
-        st.button(
-            "💡 Use Example",
-            key="sent_example",
-            on_click=set_example,
-            args=(
-                "ti1",
-                "I absolutely loved this product! The quality is amazing."
-            )
+        sentiment_examples = [
+            "Select an example...",
+            "I was disappointed with the product and would not recommend it.",
+            "The service was excellent and the quality exceeded my expectations.",
+            "The service was poor and the overall experience was frustrating.",
+            "I really enjoyed the experience and would definitely recommend it.",
+            "This product is amazing and works exactly as expected."
+        ]
+
+        st.selectbox(
+            "📝 Select an Example",
+            sentiment_examples,
+            key="sentiment_example",
+            on_change=set_sentiment_example
         )
 
     if analyze:
@@ -215,11 +247,7 @@ with tab2:
         st.button(
             "💡 Use Example",
             key="spam_example",
-            on_click=set_example,
-            args=(
-                "ti2",
-                "Congratulations! You have won a ₹10,000 prize. Click here to claim it."
-            )
+            on_click=set_spam_example
         )
 
     if check_spam:
@@ -269,6 +297,14 @@ with tab3:
         key="news_input"
     )
 
+    st.write("### 🎯 What do you think this news belongs to?")
+
+    guess = st.radio(
+        "Your Guess",
+        ["Tech", "Business", "Entertainment", "Politics"],
+        horizontal=True
+    )
+
     col1, col2 = st.columns([1, 1])
 
     with col1:
@@ -279,13 +315,9 @@ with tab3:
 
     with col2:
         st.button(
-            "💡 Use Example",
-            key="news_example",
-            on_click=set_example,
-            args=(
-                "news_input",
-                "Apple launches new AI-powered smartphone with advanced features."
-            )
+            "🎯 New Challenge",
+            key="news_challenge",
+            on_click=set_news_challenge
         )
 
     if classify_news:
